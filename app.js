@@ -7,28 +7,25 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Importa las rutas relativas a la carpeta backend
+// Rutas del backend
 const authRoutes = require('./routes/authRoutes');
 app.use('/api', authRoutes);
 
-// Importa las rutas de productos 
 const productosRoutes = require('./routes/productosRoutes');
 app.use('/api/productos', productosRoutes);
 
-// Importa las rutas de clientes
 const clientesRoutes = require('./routes/clientesRoutes');
 app.use('/api/clientes', clientesRoutes);
 
-// Importa las rutas de grados
 const gradosRoutes = require('./routes/gradosRoutes');
 app.use('/api/grados', gradosRoutes);
 
-// Sirve el frontend como estáticos
+// Servir el frontend como estático
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Redirige '/' al login
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend/pages/login.html'));
+    res.sendFile(path.join(__dirname, '../frontend/pages/login.html'));
 });
 
 const PORT = process.env.PORT || 3000;
