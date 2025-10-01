@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rutas del backend
+// Rutas backend
 const authRoutes = require('./routes/authRoutes');
 app.use('/api', authRoutes);
 
@@ -20,16 +20,15 @@ app.use('/api/clientes', clientesRoutes);
 const gradosRoutes = require('./routes/gradosRoutes');
 app.use('/api/grados', gradosRoutes);
 
-// Servir el frontend como estático
-app.use(express.static(path.join(__dirname, '../frontend')));
+// Servir frontend
+app.use(express.static(path.join(__dirname, 'frontend')));
 
-// Redirige '/' al login
+// Redirigir '/' al login
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/pages/login.html'));
+    res.sendFile(path.join(__dirname, 'frontend/pages/login.html'));
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log('Servidor corriendo en http://localhost:' + PORT);
 });
-
