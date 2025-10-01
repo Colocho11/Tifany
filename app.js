@@ -28,10 +28,11 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Redirige '/' al login
 app.get('/', (req, res) => {
-    res.redirect('/pages/login.html');
+    res.sendFile(path.join(__dirname, 'frontend/pages/login.html'));
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log('Servidor corriendo en http://localhost:' + PORT);
 });
+
