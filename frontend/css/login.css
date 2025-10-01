@@ -1,0 +1,73 @@
+body {
+            background: linear-gradient(120deg, #f6be00 0%, #e5e7f0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .login-box {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 28px rgba(26,35,110,0.10);
+            padding: 2.8rem 2rem 2rem 2rem;
+            width: 100%;
+            max-width: 400px;
+            border-top: 9px solid #f6be00;
+            position: relative;
+        }
+        .logo-img {
+            width: 160px;
+            display: block;
+            margin: 0 auto 14px auto;
+            filter: drop-shadow(0 2px 8px #f6be0060);
+        }
+        .brand {
+            color: #1a236e;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.3rem;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+        .login-box form {
+            margin-top: 18px;
+        }
+        .input-group-text {
+            background-color: #e5e7f0;
+            color: #1a236e;
+            border: none;
+        }
+        .form-control:focus {
+            border-color: #1a236e;
+            box-shadow: 0 0 0 2px #1a236e40;
+        }
+        .btn-primary {
+            background-color: #1a236e;
+            border-color: #1a236e;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #e30423;
+            border-color: #e30423;
+        }
+        .form-label {
+            color: #1a236e;
+            font-weight: 500;
+        }
+        #loginError {
+            font-size: 0.95rem;
+        }
+        .login-footer {
+            text-align: center;
+            margin-top: 2.2rem;
+            font-size: 0.97rem;
+            color: #888;
+            letter-spacing: 0.4px;
+        }
+        @media (max-width: 450px) {
+            .login-box {
+                padding: 1.5rem 0.6rem 1rem 0.6rem;
+                max-width: 95vw;
+            }
+        }

@@ -1,0 +1,313 @@
+body {
+    background: #e5e7f0;
+}
+
+.factura-header {
+    border: 1.5px solid #aaa;
+    border-radius: 16px;
+    margin-top: 24px;
+    padding: 18px 22px 22px 22px;
+    background: #fff;
+    box-shadow: 0 6px 36px #1a236e12;
+    position: relative;
+    max-width: 960px;
+}
+
+.logo-left {
+    max-width: 110px;
+}
+.logo-right {
+    max-width: 70px;
+}
+.titulo-tifany {
+    color: #1a236e;
+    font-weight: bold;
+    font-size: 1.6rem;
+    letter-spacing: 0.7px;
+}
+.subtitulo {
+    color: #2490e8;
+    font-family: 'Comic Sans MS', 'Segoe Script', cursive, sans-serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 500;
+    margin-top: -8px;
+}
+.factura-small {
+    font-size: 0.95rem;
+    color: #232323;
+    font-weight: 500;
+}
+.factura-campo {
+    font-weight: bold;
+    width: 90px;
+    color: #1a236e;
+    letter-spacing: 0.3px;
+}
+.campo-input {
+    border: none;
+    border-bottom: 2px solid #1a236e;
+    outline: none;
+    background: transparent;
+    width: 98%;
+    padding: 2px 4px;
+    font-size: 1.06rem;
+    color: #232323;
+    transition: border-color 0.2s, background 0.19s;
+}
+.campo-input:focus {
+    background: #eaf2ff;
+    border-bottom: 2px solid #2490e8;
+}
+input[type="date"].campo-input {
+    color-scheme: light;
+    color: #1a236e;
+}
+input[type="date"].campo-input:focus {
+    background: #eaf2ff;
+}
+input[type="number"].form-control:focus,
+input[type="text"].form-control:focus {
+    border-color: #1a236e !important;
+    box-shadow: 0 0 0 2px #2490e84d !important;
+}
+
+/* Tabla de productos */
+.factura-table th, .factura-table td {
+    font-size: 1.08rem;
+    border: 1px solid #1a236e99;
+    text-align: left;
+    vertical-align: middle;
+    background: #fcfcfe;
+}
+.factura-table thead th {
+    background: #e5e7f0 !important;
+    font-weight: bold;
+    color: #1a236e;
+    border-bottom: 2.5px solid #2490e8;
+}
+.factura-table tfoot td {
+    background: #f8f9fa;
+    font-weight: bold;
+    border-top: 2.5px solid #2490e8;
+    font-size: 1.13rem;
+}
+
+.btn,
+.btn:focus {
+    box-shadow: 0 1px 6px #1a236e18;
+    border-radius: 0.8rem;
+}
+.btn-primary, .btn-primary:focus {
+    background-color: #1a236e;
+    border-color: #1a236e;
+    color: #fff;
+}
+.btn-primary:hover, .btn-primary:active {
+    background-color: #2490e8;
+    border-color: #2490e8;
+    color: #fff;
+}
+.btn-success, .btn-success:focus {
+    background-color: #2490e8;
+    border-color: #2490e8;
+}
+.btn-success:hover, .btn-success:active {
+    background-color: #1a236e;
+    border-color: #1a236e;
+}
+.btn-outline-primary,
+.btn-outline-primary:focus {
+    color: #1a236e;
+    border-color: #1a236e;
+    background: transparent;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+    background-color: #2490e810;
+    color: #2490e8;
+    border-color: #2490e8;
+}
+
+/* Modal personalizado */
+.modal-content {
+    border-radius: 1.2rem;
+    border: 2px solid #2490e8;
+}
+.modal-header.bg-success {
+    background: #1a236e !important;
+    color: #fff !important;
+    border-bottom: 1.5px solid #2490e8;
+}
+.modal-title i {
+    color: #f6be00;
+    margin-right: 6px;
+}
+.modal-footer .btn-success {
+    background-color: #1a236e;
+    border-color: #1a236e;
+}
+.modal-footer .btn-success:hover {
+    background-color: #2490e8;
+    border-color: #2490e8;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+    .factura-header {
+        padding: 10px 2px 12px 2px;
+    }
+    .logo-left, .logo-right {
+        max-width: 64px;
+    }
+    .titulo-tifany { font-size: 1.1rem; }
+    .subtitulo { font-size: 0.97rem; }
+}
+
+
+.btn-agregar-producto {
+    background-color: #1a236e !important;
+    color: #fff !important;
+    border: none !important;
+    font-weight: 500;
+    border-radius: 0.7rem;
+    box-shadow: 0 1px 5px #1a236e15;
+    transition: background 0.19s, color 0.18s;
+}
+.btn-agregar-producto:hover,
+.btn-agregar-producto:focus {
+    background-color: #1a236e !important; 
+    color: #f6be00 !important; 
+}
+
+.btn-agregar-producto:hover,
+.btn-agregar-producto:focus {
+    color: #fff !important;
+}
+
+
+/* ======= MEJORA PARA EL COMBOBOX DE CLIENTES ======= */
+#cliente-select.campo-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #f6f9ff;
+    border: none;
+    border-bottom: 2px solid #1a236e;
+    outline: none;
+    width: 98%;
+    padding: 5px 32px 5px 8px;
+    font-size: 1.06rem;
+    color: #1a236e;
+    font-weight: 500;
+    transition: border-color 0.22s, background 0.19s;
+    border-radius: 0.4rem 0.4rem 0 0;
+    box-shadow: 0 2px 12px #1a236e11;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    cursor: pointer;
+}
+
+#cliente-select.campo-input:focus {
+    background-color: #eaf2ff;
+    border-bottom: 2px solid #2490e8;
+    box-shadow: 0 0 0 2px #2490e82c;
+}
+
+#cliente-select.campo-input option[disabled][selected] {
+    color: #a5a5a5;
+}
+
+#cliente-select.campo-input option {
+    color: #232323;
+    font-weight: 400;
+}
+
+/* ======= CAMPOS RELLENADOS AUTOMÁTICAMENTE ======= */
+input[readonly].campo-input {
+    background: #f9fbfe;
+    color: #1a236e;
+    font-style: italic;
+    font-weight: 500;
+    border-bottom: 2px solid #2490e8;
+}
+
+/* ======= LABELS MEJORADOS ======= */
+.factura-campo {
+    margin-right: 10px;
+    font-size: 1.06rem;
+}
+
+/* ======= PEQUEÑA SEPARACIÓN EN LAS FILAS DEL FORMULARIO ======= */
+.row.align-items-center.mb-1 {
+    margin-bottom: 0.6rem !important;
+}
+
+/* ======= MEJORA DE PLACEHOLDER ======= */
+.campo-input::placeholder {
+    color: #b5bdd6;
+    font-style: italic;
+    opacity: 1;
+}
+
+#btn-exportar-pdf {
+    margin-bottom: 18px !important;
+    margin-top: 10px !important;
+    margin-right: 8px;
+    box-shadow: 0 2px 10px #2490e860;
+    min-width: 170px;
+}
+
+/* ======= MEJORA PARA EL COMBOBOX DE CLIENTES Y GRADOS ======= */
+#cliente-select.campo-input,
+#grado-select.campo-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #f6f9ff;
+    border: none;
+    border-bottom: 2px solid #1a236e;
+    outline: none;
+    width: 98%;
+    padding: 5px 32px 5px 8px;
+    font-size: 1.06rem;
+    color: #1a236e;
+    font-weight: 500;
+    transition: border-color 0.22s, background 0.19s;
+    border-radius: 0.4rem 0.4rem 0 0;
+    box-shadow: 0 2px 12px #1a236e11;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    cursor: pointer;
+}
+
+#cliente-select.campo-input:focus,
+#grado-select.campo-input:focus {
+    background-color: #eaf2ff;
+    border-bottom: 2px solid #2490e8;
+    box-shadow: 0 0 0 2px #2490e82c;
+}
+
+#cliente-select.campo-input option[disabled][selected],
+#grado-select.campo-input option[disabled][selected] {
+    color: #a5a5a5;
+}
+
+#cliente-select.campo-input option,
+#grado-select.campo-input option {
+    color: #232323;
+    font-weight: 400;
+}
+
+/* Solo para el bloque de botones verticales en el header */
+.botones-verticales {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;  /* o end si quieres que sigan alineados a la derecha */
+}
+
+.botones-verticales .btn-agregar-producto:not(:last-child) {
+    margin-bottom: 15px;  /* Ajusta el valor según separación deseada */
+}

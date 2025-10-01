@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Programa de Valija | Variedades Tifany</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body style="background: #e5e7f0;">
+    <div class="container factura-header position-relative">
+        <!-- Botón regresar al menú principal -->
+        <a href="index.html" class="btn btn-outline-primary position-absolute top-0 end-0 m-2" style="z-index:2;">
+            <i class="bi bi-arrow-bar-left"></i> Menú principal
+        </a>
+        <!-- Encabezado y formulario -->
+        <div class="row align-items-center">
+            <div class="col-2 text-center">
+                <img src="../img/logo.png" class="logo-left mb-2">
+            </div>
+            <div class="col-8 text-center">
+                <div class="titulo-tifany">VARIEDADES TIFANY</div>
+                <div class="subtitulo">venta de útiles escolares y de Oficina</div>
+                <div class="factura-small mt-2">
+                    Aldea San Francisco, San Miguel Chicaj, Baja Verapaz<br>
+                    <span>Nit: 50507086</span><br>
+                    <span>Tel: 42110898</span>
+                </div>
+            </div>
+            <div class="col-2 text-center">
+                <img src="../img/logo2.jpg" class="logo-right mb-2">
+            </div>
+        </div>
+        <form class="mt-2">
+            <!-- Fila: Cliente | Grado | Fecha -->
+            <div class="row align-items-center mb-1">
+                <div class="col-5 d-flex align-items-center">
+                    <span class="factura-campo">Cliente:</span>
+                    <select id="cliente-select" class="campo-input ms-1" required style="width: 75%;">
+                        <option value="">Seleccione un cliente...</option>
+                        <!-- Opciones se llenan dinámicamente -->
+                    </select>
+                </div>
+                <div class="col-4 d-flex align-items-center">
+                    <span class="factura-campo">Grado:</span>
+                    <select id="grado-select" class="campo-input ms-1" required style="width: 75%;">
+                        <option value="">Seleccione un grado...</option>
+                        <!-- Opciones dinámicas -->
+                    </select>
+                </div>
+                <div class="col-3 d-flex align-items-center justify-content-end">
+                    <span class="factura-campo" style="width:60px;">Fecha:</span>
+                    <input type="date" class="campo-input" style="width:110px;" required>
+                </div>
+            </div>
+            <!-- Fila: Nit -->
+            <div class="row align-items-center mb-1">
+                <div class="col-6 d-flex align-items-center">
+                    <span class="factura-campo">Nit:</span>
+                    <input type="text" class="campo-input ms-1" id="nit-cliente" placeholder="Nit" readonly>
+                </div>
+            </div>
+            <!-- Fila: Dirección -->
+            <div class="row align-items-center mb-1">
+                <div class="col-12 d-flex align-items-center">
+                    <span class="factura-campo">Dirección:</span>
+                    <input type="text" class="campo-input ms-1" id="direccion-cliente"
+                        placeholder="Dirección del cliente" readonly>
+                </div>
+            </div>
+            <!-- Fila: Observación -->
+            <div class="row align-items-center mb-1">
+                <div class="col-12 d-flex align-items-center">
+                    <span class="factura-campo">Observación:</span>
+                    <input type="text" class="campo-input ms-1" id="observacion-cliente" placeholder="Observación"
+                        readonly>
+                </div>
+            </div>
+        </form>
+
+
+        <!-- Barra de búsqueda con botón -->
+        <div class="row mb-3 mt-4">
+            <div class="col-8">
+                <div class="input-group shadow-sm">
+                    <input type="text" class="form-control" placeholder="Buscar en productos..." id="buscador-productos"
+                        autocomplete="off">
+                    <button class="btn btn-primary" id="btn-buscar" type="button">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                </div>
+            </div>
+            <div class="col-4 text-end">
+                <div class="botones-verticales">
+                    <button type="button" class="btn btn-agregar-producto" data-bs-toggle="modal"
+                        data-bs-target="#modalTotalizarProducto">
+                        <i class="bi bi-plus-lg"></i> Totalizar producto
+                    </button>
+                    <button type="button" class="btn btn-agregar-producto" data-bs-toggle="modal"
+                        data-bs-target="#modalAgregarProducto">
+                        <i class="bi bi-plus-circle"></i> Agregar producto
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal para agregar producto -->
+        <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="modalAgregarProductoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content border-2 border-primary-subtle">
+                    <div class="modal-header" style="background-color: #1a236e; color: #fff;">
+                        <h5 class="modal-title" id="modalAgregarProductoLabel">
+                            <i class="bi bi-plus-circle"></i> Agregar producto
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formAgregarProducto">
+                            <div class="mb-3">
+                                <label for="cantidad" class="form-label">Cantidad:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="bi bi-hash"></i></span>
+                                    <input type="number" class="form-control" id="cantidad" name="cantidad" min="1"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="bi bi-card-text"></i></span>
+                                    <input type="text" class="form-control" id="descripcion" name="descripcion"
+                                        maxlength="255" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="precio_unitario" class="form-label">Precio unitario (Q):</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i
+                                            class="bi bi-currency-exchange"></i></span>
+                                    <input type="number" step="0.01" class="form-control" id="precio_unitario"
+                                        name="precio_unitario" min="0" required>
+                                </div>
+                            </div>
+                            <!-- modulo_id lo pones automático en el backend o como input oculto si lo necesitas -->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-agregar-producto" form="formAgregarProducto">
+                            <i class="bi bi-floppy"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para totalizar producto (sumar cantidad) -->
+        <div class="modal fade" id="modalTotalizarProducto" tabindex="-1" aria-labelledby="modalTotalizarProductoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content border-2 border-success">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="modalTotalizarProductoLabel">
+                            <i class="bi bi-plus-lg"></i> Totalizar producto existente
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formTotalizarProducto">
+                            <div class="mb-3">
+                                <label for="producto-existente" class="form-label">Producto:</label>
+                                <select class="form-select" id="producto-existente" required>
+                                    <option value="">Seleccione un producto...</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cantidad-suma" class="form-label">Cantidad a sumar:</label>
+                                <input type="number" class="form-control" id="cantidad-suma" min="1" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success" form="formTotalizarProducto">
+                            <i class="bi bi-plus-lg"></i> Totalizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de productos con scroll y acciones -->
+        <div class="table-responsive mt-4" style="max-height: 420px; overflow-y: auto;">
+            <table class="table table-bordered factura-table align-middle" id="tabla-productos">
+                <thead class="table-light" style="position: sticky; top: 0; z-index: 10;">
+                    <tr>
+                        <th style="width: 70px;">Cantidad</th>
+                        <th>Descripción</th>
+                        <th style="width: 120px;">Pre. Unitario</th>
+                        <th style="width: 120px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Productos se llenan dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botón Exportar PDF -->
+        <div class="text-end mb-2">
+            <button type="button" class="btn btn-primary" id="btn-exportar-pdf">
+                <i class="bi bi-file-earmark-pdf"></i> Exportar PDF
+            </button>
+        </div>
+
+        <!-- Segunda tabla resumen con scroll -->
+        <div class="table-responsive mt-4" style="max-height: 320px; overflow-y: auto;">
+            <table class="table table-bordered factura-table align-middle" id="tabla-resumen">
+                <thead class="table-light" style="position: sticky; top: 0; z-index: 10;">
+                    <tr>
+                        <th style="width: 70px;">Cantidad</th>
+                        <th>Descripción</th>
+                        <th style="width: 120px;">Pre. Unitario</th>
+                        <th style="width: 120px;">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Resumen dinámico -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-end fw-bold">Q</td>
+                        <td class="text-end fw-bold" id="total-general"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- Modal para editar producto -->
+        <div class="modal fade" id="modalEditarProducto" tabindex="-1" aria-labelledby="modalEditarProductoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content border-2 border-primary-subtle">
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title" id="modalEditarProductoLabel">
+                            <i class="bi bi-pencil-square"></i> Editar producto
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formEditarProducto">
+                            <input type="hidden" id="editar-id">
+                            <div class="mb-3">
+                                <label for="editar-cantidad" class="form-label">Cantidad:</label>
+                                <input type="number" class="form-control" id="editar-cantidad" name="cantidad" min="0"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-descripcion" class="form-label">Descripción:</label>
+                                <input type="text" class="form-control" id="editar-descripcion" name="descripcion"
+                                    maxlength="255" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-precio" class="form-label">Precio unitario (Q):</label>
+                                <input type="number" step="0.01" class="form-control" id="editar-precio"
+                                    name="precio_unitario" min="0" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success" form="formEditarProducto">
+                            <i class="bi bi-floppy"></i> Guardar cambios
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para confirmar eliminación de producto -->
+        <div class="modal fade" id="modalEliminarProducto" tabindex="-1" aria-labelledby="modalEliminarProductoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content border-2 border-danger">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="modalEliminarProductoLabel">
+                            <i class="bi bi-trash3-fill"></i> Eliminar producto
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="textoEliminarProducto">
+                            ¿Estás seguro que deseas eliminar este producto?
+                        </p>
+                        <input type="hidden" id="eliminar-id">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">
+                            <i class="bi bi-trash3-fill"></i> Eliminar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Bootstrap JS (modal funcional) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+        <script src="../js/Valija.js"></script>
+    </div>
+</body>
+
+</html>
